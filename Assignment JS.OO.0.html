@@ -1,0 +1,65 @@
+<!doctype html>
+<html language="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title>Objects</title>
+    </head>
+    <body>
+        <h1>Assignment JS.OO.0</h1>
+        <p>
+            Create a tunes object from a prototype using
+            the OLOO Pattern.
+        </p>
+        <div>
+            <form>
+                <input id="title" type="text" name="title">
+                <input id="composer" type="text" name="composer">
+                <input id="year" type="number" name="year">
+                <input id="performer" type="text" name="performer">
+                <input id="button" type="button" name="submit" value="submit">
+            </form>
+            <h2>Song list</h2>
+            <p id="songs"></p>
+            <script>
+                'use strict'
+                    const $ = function(foo) {
+                        return document.getElementById(foo);    
+                    }
+
+                    let tune = {
+                        init: function (title, composer, year, performer) {
+                            this.title = title;
+                            this.composer = composer;
+                            this.year = year;
+                            this.performer = [];
+                            this.performer[0] = performer;
+                        },
+
+                        vis: function() {
+                            return `<p>${this.title}, ${this.composer}, ${this.year}, ${this.composer[0]}</p>`;
+                        } 
+                    };
+
+                    const display = function() {
+                        $("songs").innerHTML = "";
+                            for (tune of arr) {
+                                $("songs").innerHTML += tune.vis() + '<br>';
+                                $("title").value = "";
+                                $("composer").value = "";
+                                $("year").value = "";
+                                $("performer").value = "";
+                            }
+                    }
+
+                    let arr = [];
+                    $("button").addEventListener('click', function() {
+                        let t = Object.create(tune);
+                        t.init($("title").value, $("composer").value, $("year").value, $("performer").value);
+                        arr.push(t);
+                        console.log(t);
+                        display();
+                    });
+            </script>
+        </div>
+    </body>
+</html>

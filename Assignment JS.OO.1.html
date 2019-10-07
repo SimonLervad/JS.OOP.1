@@ -1,0 +1,60 @@
+<!doctype html>
+<html language="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title>Objects</title>
+    </head>
+    <body>
+        <h1>Assignment JS.OO.0</h1>
+        <p>
+            Create a tunes object from a prototype using
+            the OLOO Pattern.
+        </p>
+        <div>
+            <form id="univers">
+                <label>Mercury<input id="mercury" type="radio" name="planet"><br>
+                <label>Venus<input id="venus" type="radio" name="planet"><br>
+                <label>Earth<input id="earth" type="radio" name="planet"><br>
+            </form>
+            <h2>Planets</h2>
+            <p id="planet"></p>
+            <script>
+                'use strict'
+                let arr = [];
+                let planets = {
+                    mercury: {
+                        dist: "0.3871 AU", 
+                        sid: "0.2408 y = 87.97 d",
+                        syn: "115.88 d", 
+                        name: "Mercury"
+                    },
+                    venus: {
+                        dist: "0.7233 AU", 
+                        sid: "0.6152 y = 224.70 d", 
+                        syn: "583.92 d", 
+                        name: "Venus"
+                    },
+                    earth: {
+                        dist: "1.0000 AU", 
+                        sid: "1.0000 y = 365.26 d", 
+                        syn: "----", 
+                        name: "Earth"
+                    },
+                };
+
+                const adaptBy = function(e) {
+                    document.getElementById("planet").innerHTML = 
+                        planets[e.target.id].name + "<br>" + 
+                        planets[e.target.id].dist + "<br>" + 
+                        planets[e.target.id].sid + "<br>" + 
+                        planets[e.target.id].syn;
+                }
+
+                const start = function() {
+                    document.getElementById('univers').addEventListener('change', adaptBy);
+                }
+                window.addEventListener('load', start);
+            </script>
+        </div>
+    </body>
+</html>
